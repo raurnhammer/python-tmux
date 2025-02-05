@@ -7,6 +7,11 @@ ARG GID=1000
 WORKDIR /app
 
 RUN apt update && apt install -y tmux
+RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && \
+    chmod u+x nvim.appimage && \
+    ./nvim.appimage --appimage-extract && \
+    mv squashfs-root /opt/nvim && \
+    ln -s /opt/nvim/usr/bin/nvim /usr/local/bin/nvim
 
 # Create a non-root user and group with specific IDs
 RUN groupadd -g $GID appgroup && useradd -u $UID -g $GID -s /bin/bash -m appuser
