@@ -6,6 +6,8 @@ ARG GID=1000
 # Set the working directory in the container
 WORKDIR /app
 
+RUN apt update && apt install -y tmux
+
 # Create a non-root user and group with specific IDs
 RUN groupadd -g $GID appgroup && useradd -u $UID -g $GID -s /bin/bash -m appuser
 
