@@ -16,6 +16,6 @@ RUN echo 'export PATH=$PATH:/opt/nvim-linux-x86_64/bin' >> /home/appuser/.bashrc
 
 USER $UID
 
-RUN pip install pandas boto3 pyarrow s3fs
+RUN pip install pandas boto3 pyarrow s3fs psycopg2-binary python-dateutil pytz six tzdata numpy
 
 CMD ["/bin/sh", "-c", "--", "while true; do sleep 30; done;"]
